@@ -33,7 +33,7 @@ cd ..
 
 # Run frontend static server
 echo "Starting frontend..."
-npx serve -s frontend -l 5500 &
+npx serve frontend -l 5500 &
 FRONTEND_PID=$!
 
 # Wait briefly for servers to spin up

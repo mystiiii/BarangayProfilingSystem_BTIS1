@@ -20,8 +20,8 @@ start "NestJS Backend" cmd /c "npm run start:dev"
 cd ..
 
 :: Start frontend static server in a new command pane
-echo Starting frontend...
-start "Frontend Server" cmd /c "npx serve -s frontend -l 5500"
+echo "Starting frontend..."
+start "Frontend Server" cmd /c "npx serve frontend -l 5500"
 
 :: Wait briefly and open the browser
 timeout /t 2 >nul

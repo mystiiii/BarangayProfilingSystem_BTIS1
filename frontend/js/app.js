@@ -22,8 +22,11 @@ function highlightActiveMenu() {
     const link = item.querySelector('a');
     if (link) {
       const href = link.getAttribute('href');
-      // Matches pathnames e.g. "residents.html" or "/residents.html"
-      if (currentPath.endsWith(href) || (currentPath === '/' && href === 'residents.html')) {
+      const cleanHref = href.replace('.html', '');
+      const isMatch = currentPath.endsWith(href) || 
+                      currentPath.endsWith(cleanHref) || 
+                      (currentPath === '/' && cleanHref === 'residents');
+      if (isMatch) {
         item.classList.add('active');
       } else {
         item.classList.remove('active');

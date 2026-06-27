@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Patch, Delete, Body, Param, Dependencies } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Delete, Body, Param, Dependencies, Bind } from '@nestjs/common';
 import { ResidentsService } from './residents.service';
 
 @Controller('residents')
@@ -14,22 +14,26 @@ export class ResidentsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id) {
+  @Bind(Param('id'))
+  findOne(id) {
     return this.residentsService.findOne(id);
   }
 
   @Post()
-  create(@Body() createResidentDto) {
+  @Bind(Body())
+  create(createResidentDto) {
     return this.residentsService.create(createResidentDto);
   }
 
   @Patch(':id')
-  update(@Param('id') id, @Body() updateResidentDto) {
+  @Bind(Param('id'), Body())
+  update(id, updateResidentDto) {
     return this.residentsService.update(id, updateResidentDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id) {
+  @Bind(Param('id'))
+  remove(id) {
     return this.residentsService.remove(id);
   }
 }

@@ -3,11 +3,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class HouseholdsService {
   constructor() {
-    this.mockHouseholds = [
-      { id: 'HH-2026-0012', name: 'Mauri Family', head: 'Julianne Mauri', members: 4, zone: 'Zone 3', status: 'Active' },
-      { id: 'HH-2026-0043', name: 'Dela Cruz Family', head: 'Juan Dela Cruz', members: 5, zone: 'Zone 1', status: 'Active' },
-      { id: 'HH-2026-0089', name: 'Santos Family', head: 'Roberto Santos', members: 3, zone: 'Zone 2', status: 'Pending' }
-    ];
+    this.mockHouseholds = [];
   }
 
   findAll() {
