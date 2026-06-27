@@ -1,6 +1,6 @@
-# Barangay Profiling System - Setup Guide
+# Barangay Profiling System - Configuration Guide
 
-## 1. Configure the Project
+## How to Configure the Project
 
 Copy the environment template from the root into the `backend` folder:
 
@@ -8,31 +8,13 @@ Copy the environment template from the root into the `backend` folder:
 cp .envcopy backend/.env
 ```
 
-Open `backend/.env` and update the database credentials if necessary.
+Open `backend/.env` and update the database details (e.g. MS SQL configuration variables, ports, credentials) as needed.
 
 ---
 
-## 2. Start the Backend
+## How to Run the Program
 
-Navigate to the `backend` directory, install Node dependencies, and start the development server:
+We have provided quick startup scripts for macOS and Windows. 
 
-```bash
-cd backend
-npm install
-npm run start:dev
-```
-
-The backend API will run at: `http://localhost:3000`
-
----
-
-## 3. Start the Frontend
-
-The frontend is written in static HTML, CSS, and JS. You can serve it using any simple HTTP server:
-
-```bash
-# From the project root, run a static server:
-npx serve frontend
-```
-
-Alternatively, open `frontend/residents.html` in your browser or run the **Live Server** extension in VS Code.
+- **macOS/Linux**: Double-click or run `./run.sh` from the root directory.
+- **Windows**: Double-click or run `run.bat` from the root directory.
