@@ -18,3 +18,5 @@ We have provided quick startup scripts for macOS and Windows.
 
 - **macOS/Linux**: Double-click or run `./run.sh` from the root directory.
 - **Windows**: Double-click or run `run.bat` from the root directory.
+
+*Note: The startup scripts will automatically detect and install all necessary backend dependencies (`npm install`) on their first execution.*

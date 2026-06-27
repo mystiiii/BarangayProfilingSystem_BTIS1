@@ -1,44 +1,38 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Dependencies } from '@nestjs/common';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { Family } from './family.entity';
+import { Address } from './address.entity';
 
 @Injectable()
+@Dependencies(getRepositoryToken(Family), getRepositoryToken(Address))
 export class HouseholdsService {
-  constructor() {
-    this.mockHouseholds = [];
+  constructor(familyRepository, addressRepository) {
+    this.familyRepository = familyRepository;
+    this.addressRepository = addressRepository;
   }
 
+  // Example DB retrieval: return await this.familyRepository.find();
   findAll() {
-    return this.mockHouseholds;
+    return [];
   }
 
+  // Example DB retrieval: return await this.familyRepository.findOneBy({ FamilyID: id });
   findOne(id) {
-    return this.mockHouseholds.find(h => h.id === id) || { message: 'Household not found' };
+    return { id, message: 'Household details placeholder' };
   }
 
+  // Example DB insertion: return await this.familyRepository.save(createHouseholdDto);
   create(createHouseholdDto) {
-    const newHousehold = {
-      id: `HH-2026-00${this.mockHouseholds.length + 10}`,
-      ...createHouseholdDto,
-      status: 'Pending'
-    };
-    this.mockHouseholds.push(newHousehold);
-    return newHousehold;
+    return { message: 'Household creation placeholder', data: createHouseholdDto };
   }
 
+  // Example DB update: return await this.familyRepository.update(id, updateHouseholdDto);
   update(id, updateHouseholdDto) {
-    const index = this.mockHouseholds.findIndex(h => h.id === id);
-    if (index > -1) {
-      this.mockHouseholds[index] = { ...this.mockHouseholds[index], ...updateHouseholdDto };
-      return this.mockHouseholds[index];
-    }
-    return { message: 'Household not found' };
+    return { id, message: 'Household update placeholder', data: updateHouseholdDto };
   }
 
+  // Example DB deletion: return await this.familyRepository.delete(id);
   remove(id) {
-    const index = this.mockHouseholds.findIndex(h => h.id === id);
-    if (index > -1) {
-      const deleted = this.mockHouseholds.splice(index, 1);
-      return { message: 'Household deleted successfully', deleted };
-    }
-    return { message: 'Household not found' };
+    return { id, message: 'Household deletion placeholder' };
   }
 }

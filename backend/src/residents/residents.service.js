@@ -1,44 +1,36 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Dependencies } from '@nestjs/common';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { Resident } from './resident.entity';
 
 @Injectable()
+@Dependencies(getRepositoryToken(Resident))
 export class ResidentsService {
-  constructor() {
-    this.mockResidents = [];
+  constructor(residentRepository) {
+    this.residentRepository = residentRepository;
   }
 
+  // Example DB retrieval: return await this.residentRepository.find();
   findAll() {
-    return this.mockResidents;
+    return [];
   }
 
+  // Example DB retrieval: return await this.residentRepository.findOneBy({ ResidentID: id });
   findOne(id) {
-    return this.mockResidents.find(r => r.id === id) || { message: 'Resident not found' };
+    return { id, message: 'Resident details placeholder' };
   }
 
+  // Example DB insertion: return await this.residentRepository.save(createResidentDto);
   create(createResidentDto) {
-    const newResident = {
-      id: `RES-2026-000${this.mockResidents.length + 1}`,
-      ...createResidentDto,
-      status: 'Pending'
-    };
-    this.mockResidents.push(newResident);
-    return newResident;
+    return { message: 'Resident creation placeholder', data: createResidentDto };
   }
 
+  // Example DB update: return await this.residentRepository.update(id, updateResidentDto);
   update(id, updateResidentDto) {
-    const index = this.mockResidents.findIndex(r => r.id === id);
-    if (index > -1) {
-      this.mockResidents[index] = { ...this.mockResidents[index], ...updateResidentDto };
-      return this.mockResidents[index];
-    }
-    return { message: 'Resident not found' };
+    return { id, message: 'Resident update placeholder', data: updateResidentDto };
   }
 
+  // Example DB deletion: return await this.residentRepository.delete(id);
   remove(id) {
-    const index = this.mockResidents.findIndex(r => r.id === id);
-    if (index > -1) {
-      const deleted = this.mockResidents.splice(index, 1);
-      return { message: 'Resident deleted successfully', deleted };
-    }
-    return { message: 'Resident not found' };
+    return { id, message: 'Resident deletion placeholder' };
   }
 }
