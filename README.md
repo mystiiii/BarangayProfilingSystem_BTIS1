@@ -35,4 +35,4 @@ The frontend is written in static HTML, CSS, and JS. You can serve it using any 
 npx serve frontend
 ```
 
-Alternatively, open `frontend/dashboard.html` in your browser or run the **Live Server** extension in VS Code.
+Alternatively, open `frontend/residents.html` in your browser or run the **Live Server** extension in VS Code.

@@ -22,8 +22,8 @@ function highlightActiveMenu() {
     const link = item.querySelector('a');
     if (link) {
       const href = link.getAttribute('href');
-      // Matches pathnames e.g. "dashboard.html" or "/dashboard.html"
-      if (currentPath.endsWith(href) || (currentPath === '/' && href === 'dashboard.html')) {
+      // Matches pathnames e.g. "residents.html" or "/residents.html"
+      if (currentPath.endsWith(href) || (currentPath === '/' && href === 'residents.html')) {
         item.classList.add('active');
       } else {
         item.classList.remove('active');
