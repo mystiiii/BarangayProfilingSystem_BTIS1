@@ -16,7 +16,7 @@
         Barangay<span>Profile</span>
       </div>
       <ul class="sidebar-menu">
-        <li class="sidebar-item"><a href="residents.html">Residents</a></li>
+        <li class="sidebar-item active"><a href="residents.html">Residents</a></li>
         <li class="sidebar-item"><a href="households.html">Households</a></li>
       </ul>
     </aside>
@@ -36,50 +36,238 @@
 
       <!-- Page Content -->
       <section class="content-body">
-        <div class="card">
-          <!-- Control Panel -->
-          <div class="controls-bar">
-            <div class="search-input-wrapper">
-              <input type="text" class="search-input" placeholder="Search by name, ID or national ID...">
+
+        <!-- Page Heading -->
+        <div class="page-heading">
+          <div>
+            <h2 class="ledger-title">Resident Registry Ledger</h2>
+            <p class="ledger-subtitle">Official profile log database for verifying residency and program qualifications</p>
+          </div>
+          <button class="btn btn-primary" onclick="openAddResidentModal()">+ Add New Resident</button>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label class="filter-label">Residency Status</label>
+            <select class="filter-select" id="statusFilter" onchange="applyFilters()">
+              <option value="">All Statuses</option>
+              <option value="Active">Active</option>
+              <option value="Pending">Pending</option>
+              <option value="Inactive">Inactive</option>
+              <option value="Deceased">Deceased</option>
+              <option value="Moved">Moved</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Barangay Sector</label>
+            <select class="filter-select" id="sectorFilter" onchange="applyFilters()">
+              <option value="">All Barangays</option>
+              <option value="Barangay San Jose">Barangay San Jose</option>
+              <option value="Barangay Rizal">Barangay Rizal</option>
+            </select>
+          </div>
+          <div class="filter-records" id="recordsCount">Showing 0 of 0 total records</div>
+        </div>
+
+        <!-- Resident Data Table -->
+        <div class="table-wrapper">
+          <table class="data-table" id="residentsTable">
+            <thead>
+              <tr>
+                <th class="col-id">ID ▲</th>
+                <th>Name</th>
+                <th>Age / Sex</th>
+                <th>Address / Sector</th>
+                <th>Relations Head</th>
+                <th>Registry Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="residentsTableBody">
+              <!-- Populated by residents.js -->
+            </tbody>
+          </table>
+
+          <div class="empty-state" id="emptyState" style="display:none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <p>No residents found</p>
+            <span>Try adjusting your filters.</span>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <div class="pagination-info" id="paginationInfo">Showing 0 entries</div>
+          <div class="pagination-buttons">
+            <button class="btn btn-secondary" id="prevBtn" onclick="changePage(-1)" style="padding:6px 14px;" disabled>← Previous</button>
+            <span class="pagination-pages" id="pageIndicator">Page 1</span>
+            <button class="btn btn-secondary" id="nextBtn" onclick="changePage(1)" style="padding:6px 14px;">Next →</button>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- ===== ADD RESIDENT MODAL ===== -->
+  <div class="modal-overlay" id="addResidentOverlay" onclick="handleOverlayClick(event)">
+    <div class="modal-panel" id="addResidentPanel">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title">Add New Resident</h2>
+          <p class="modal-subtitle">Fill in the resident's details below.</p>
+        </div>
+        <button class="modal-close" onclick="closeAddResidentModal()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <form class="modal-form" id="addResidentForm" onsubmit="handleAddResident(event)">
+
+        <div class="form-section">
+          <div class="form-section-label">Personal Information</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="firstName">First Name <span class="required">*</span></label>
+              <input type="text" id="firstName" class="form-input" placeholder="e.g. Juan" required>
             </div>
-            <div>
-              <button class="btn btn-primary" onclick="openAddResidentModal()">+ Add Resident</button>
+            <div class="form-group">
+              <label class="form-label" for="middleName">Middle Name</label>
+              <input type="text" id="middleName" class="form-input" placeholder="e.g. Reyes">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lastName">Last Name <span class="required">*</span></label>
+              <input type="text" id="lastName" class="form-input" placeholder="e.g. Dela Cruz" required>
             </div>
           </div>
-
-          <!-- Resident Data Table -->
-          <div class="table-container">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Resident ID</th>
-                  <th>Full Name</th>
-                  <th>Age</th>
-                  <th>Household ID</th>
-                  <th>Zone</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td colspan="7" style="text-align: center; color: var(--text-secondary);">No residents registered yet.</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+              <input type="date" id="dateOfBirth" class="form-input" required onchange="calculateAge()">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="age">Age</label>
+              <input type="number" id="age" class="form-input" placeholder="Auto-calculated" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sex">Sex <span class="required">*</span></label>
+              <select id="sex" class="form-input" required>
+                <option value="" disabled selected>Select sex</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
           </div>
-
-          <!-- Table Pagination Footer -->
-          <div class="pagination">
-            <div class="pagination-info">Showing 1 to 3 of 1,248 entries</div>
-            <div class="pagination-buttons">
-              <button class="btn btn-secondary" style="padding: 6px 12px;">Previous</button>
-              <button class="btn btn-secondary" style="padding: 6px 12px;">Next</button>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="civilStatus">Civil Status <span class="required">*</span></label>
+              <select id="civilStatus" class="form-input" required>
+                <option value="" disabled selected>Select status</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Separated">Separated</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="citizenship">Citizenship <span class="required">*</span></label>
+              <input type="text" id="citizenship" class="form-input" placeholder="e.g. Filipino" value="Filipino" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="occupation">Occupation</label>
+              <input type="text" id="occupation" class="form-input" placeholder="e.g. Farmer">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="contactNumber">Contact Number</label>
+              <input type="tel" id="contactNumber" class="form-input" placeholder="e.g. 09171234567">
             </div>
           </div>
         </div>
-      </section>
-    </main>
+
+        <div class="form-section">
+          <div class="form-section-label">Address & Household</div>
+          <div class="form-row">
+            <div class="form-group form-group--wide">
+              <label class="form-label" for="streetAddress">Street Address <span class="required">*</span></label>
+              <input type="text" id="streetAddress" class="form-input" placeholder="e.g. 12A Rizal Avenue" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="barangaySector">Barangay Sector <span class="required">*</span></label>
+              <select id="barangaySector" class="form-input" required>
+                <option value="" disabled selected>Select barangay</option>
+                <option value="Barangay San Jose">Barangay San Jose</option>
+                <option value="Barangay Rizal">Barangay Rizal</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="householdId">Household ID <span class="required">*</span></label>
+              <input type="text" id="householdId" class="form-input" placeholder="e.g. H-1" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lengthOfResidency">Length of Residency</label>
+              <input type="text" id="lengthOfResidency" class="form-input" placeholder="e.g. 5 years">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-label">Record Status</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="residencyStatus">Residency Status <span class="required">*</span></label>
+              <select id="residencyStatus" class="form-input" required>
+                <option value="" disabled selected>Select status</option>
+                <option value="Active">Active</option>
+                <option value="Pending">Pending</option>
+                <option value="Inactive">Inactive</option>
+                <option value="Moved">Moved</option>
+                <option value="Deceased">Deceased</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeAddResidentModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Resident</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== CONFIRM DIALOG ===== -->
+  <div class="modal-overlay" id="confirmOverlay">
+    <div class="confirm-dialog">
+      <div class="confirm-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+        </svg>
+      </div>
+      <h3 class="confirm-title">Confirm New Resident</h3>
+      <p class="confirm-message">Are you sure you want to save this resident record?</p>
+      <div class="confirm-actions">
+        <button class="btn btn-secondary" onclick="closeConfirmDialog()">Go Back</button>
+        <button class="btn btn-primary" onclick="confirmSaveResident()">Confirm & Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOAST ===== -->
+  <div class="toast" id="toast">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+    </svg>
+    <span id="toastMessage">Resident saved successfully.</span>
   </div>
 
   <script src="js/app.js"></script>
