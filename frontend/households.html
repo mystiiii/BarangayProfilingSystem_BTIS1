@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Households Management - Barangay Profiling System</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/households.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        Barangay<span>Profile</span>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-item"><a href="dashboard.html">Dashboard</a></li>
+        <li class="sidebar-item"><a href="residents.html">Residents</a></li>
+        <li class="sidebar-item"><a href="households.html">Households</a></li>
+        <li class="sidebar-item"><a href="reports.html">Reports</a></li>
+        <li class="sidebar-item"><a href="settings.html">Settings</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="main-header">
+        <div class="page-title">
+          <h1>Households</h1>
+        </div>
+        <div class="user-profile">
+          <span class="user-name">Administrator</span>
+          <div class="avatar">A</div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <section class="content-body">
+        <!-- Control Bar -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+          <h2 style="font-size: 1.1rem; font-weight: 600;">Registered Households</h2>
+          <button class="btn btn-primary">+ Add Household</button>
+        </div>
+
+        <!-- Cards Grid Layout -->
+        <div class="households-grid">
+          <!-- Card 1 -->
+          <div class="card household-card">
+            <div class="household-header">
+              <div>
+                <span class="household-number">HH-2026-0012</span>
+                <h3 class="household-head">Mauri Family</h3>
+              </div>
+              <span class="badge badge-active">Active</span>
+            </div>
+            <div class="household-details">
+              <div class="detail-row">
+                <span>Head of House:</span>
+                <span class="detail-value">Julianne Mauri</span>
+              </div>
+              <div class="detail-row">
+                <span>Total Members:</span>
+                <span class="detail-value">4 Members</span>
+              </div>
+              <div class="detail-row">
+                <span>Zone Location:</span>
+                <span class="detail-value">Zone 3</span>
+              </div>
+            </div>
+            <div class="household-footer">
+              <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="viewHouseholdMembers('HH-2026-0012')">View Members</button>
+              <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Edit</button>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card household-card">
+            <div class="household-header">
+              <div>
+                <span class="household-number">HH-2026-0043</span>
+                <h3 class="household-head">Dela Cruz Family</h3>
+              </div>
+              <span class="badge badge-active">Active</span>
+            </div>
+            <div class="household-details">
+              <div class="detail-row">
+                <span>Head of House:</span>
+                <span class="detail-value">Juan Dela Cruz</span>
+              </div>
+              <div class="detail-row">
+                <span>Total Members:</span>
+                <span class="detail-value">5 Members</span>
+              </div>
+              <div class="detail-row">
+                <span>Zone Location:</span>
+                <span class="detail-value">Zone 1</span>
+              </div>
+            </div>
+            <div class="household-footer">
+              <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="viewHouseholdMembers('HH-2026-0043')">View Members</button>
+              <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Edit</button>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card household-card">
+            <div class="household-header">
+              <div>
+                <span class="household-number">HH-2026-0089</span>
+                <h3 class="household-head">Santos Family</h3>
+              </div>
+              <span class="badge badge-pending">Pending Approval</span>
+            </div>
+            <div class="household-details">
+              <div class="detail-row">
+                <span>Head of House:</span>
+                <span class="detail-value">Roberto Santos</span>
+              </div>
+              <div class="detail-row">
+                <span>Total Members:</span>
+                <span class="detail-value">3 Members</span>
+              </div>
+              <div class="detail-row">
+                <span>Zone Location:</span>
+                <span class="detail-value">Zone 2</span>
+              </div>
+            </div>
+            <div class="household-footer">
+              <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;" onclick="viewHouseholdMembers('HH-2026-0089')">View Members</button>
+              <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Edit</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/households.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Residents Management - Barangay Profiling System</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/residents.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        Barangay<span>Profile</span>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="sidebar-item"><a href="dashboard.html">Dashboard</a></li>
+        <li class="sidebar-item"><a href="residents.html">Residents</a></li>
+        <li class="sidebar-item"><a href="households.html">Households</a></li>
+        <li class="sidebar-item"><a href="reports.html">Reports</a></li>
+        <li class="sidebar-item"><a href="settings.html">Settings</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="main-header">
+        <div class="page-title">
+          <h1>Residents</h1>
+        </div>
+        <div class="user-profile">
+          <span class="user-name">Administrator</span>
+          <div class="avatar">A</div>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <section class="content-body">
+        <div class="card">
+          <!-- Control Panel -->
+          <div class="controls-bar">
+            <div class="search-input-wrapper">
+              <input type="text" class="search-input" placeholder="Search by name, ID or national ID...">
+            </div>
+            <div>
+              <button class="btn btn-primary" onclick="openAddResidentModal()">+ Add Resident</button>
+            </div>
+          </div>
+
+          <!-- Resident Data Table -->
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Resident ID</th>
+                  <th>Full Name</th>
+                  <th>Age</th>
+                  <th>Household ID</th>
+                  <th>Zone</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>RES-2026-0001</strong></td>
+                  <td>Juan Dela Cruz</td>
+                  <td>28</td>
+                  <td>HH-2026-0043</td>
+                  <td>Zone 1</td>
+                  <td><span class="badge badge-active">Active</span></td>
+                  <td>
+                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Edit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>RES-2026-0002</strong></td>
+                  <td>Maria Santos</td>
+                  <td>34</td>
+                  <td>HH-2026-0012</td>
+                  <td>Zone 3</td>
+                  <td><span class="badge badge-active">Active</span></td>
+                  <td>
+                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Edit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>RES-2026-0003</strong></td>
+                  <td>Jose Rizal</td>
+                  <td>19</td>
+                  <td>HH-2026-0043</td>
+                  <td>Zone 1</td>
+                  <td><span class="badge badge-pending">Pending</span></td>
+                  <td>
+                    <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Edit</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Table Pagination Footer -->
+          <div class="pagination">
+            <div class="pagination-info">Showing 1 to 3 of 1,248 entries</div>
+            <div class="pagination-buttons">
+              <button class="btn btn-secondary" style="padding: 6px 12px;">Previous</button>
+              <button class="btn btn-secondary" style="padding: 6px 12px;">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/residents.js"></script>
+</body>
+</html>
