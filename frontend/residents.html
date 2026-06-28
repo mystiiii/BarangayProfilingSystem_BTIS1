@@ -13,18 +13,18 @@
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
       <ul class="sidebar-menu">
-        <li class="sidebar-item"><a href="a"><i class="fa-solid fa-table-cells-large"></i>Dashboard</a></li>
+        <!-- <li class="sidebar-item"><a href="a"><i class="fa-solid fa-table-cells-large"></i>Dashboard</a></li> -->
         <li class="sidebar-item active"><a href="residents.html"><i class="fa-solid fa-users"></i>Residents</a></li>
         <li class="sidebar-item"><a href="households.html"><i class="fa-solid fa-house"></i>Households</a></li>
-        <li class="sidebar-item"><a href="a"><i class="fa-solid fa-file-lines"></i>Reports</a></li>
-        <li class="sidebar-item"><a href="a"><i class="fa-solid fa-gear"></i>Settings</a></li>
+        <!-- <li class="sidebar-item"><a href="a"><i class="fa-solid fa-file-lines"></i>Reports</a></li>
+        <li class="sidebar-item"><a href="a"><i class="fa-solid fa-gear"></i>Settings</a></li> -->
       </ul>
     </aside>
 
 <header class="main-header">
             <div class="sidebar-logo">
                 <i class="fa-solid fa-landmark"></i>
-                Brgy. System
+                Barangay System
             <div class="logo-text">
                 <span>INTERNAL CONSOLE</span>
             </div>
@@ -36,8 +36,9 @@
             </div>
 
             <div class="header-actions">
-                <button class="top-btn">
-                + NEW PROFILING
+                <button class="add-resident-btn"
+                    onclick="openAddResidentModal()">
+                    + NEW PROFILING
                 </button>
             </div>
         </header>
@@ -54,11 +55,6 @@
             <h2 class="ledger-title">Resident Registry Ledger</h2>
             <p class="ledger-subtitle">Official profile log database for verifying residency and program qualifications</p>
           </div>
-          <button
-            class="add-resident-btn"
-            onclick="openAddResidentModal()">
-            + ADD NEW RESIDENT
-          </button>
         </div>
 
         <!-- Filter Bar -->
@@ -82,7 +78,7 @@
               <option value="Barangay Rizal">Barangay Rizal</option>
             </select>
           </div>
-          <div class="filter-records" id="recordsCount">Showing <STRONG>0</STRONG>0 of 0 total records</div>
+          <div class="filter-records" id="recordsCount">Showing <STRONG>00</STRONG> of 00 total records</div>
         </div>
 
         <!-- Resident Data Table -->
@@ -129,7 +125,7 @@
     <div class="modal-panel" id="addResidentPanel">
       <div class="modal-header">
         <div>
-          <h2 class="modal-title">Add New Resident</h2>
+          <h2 class="modal-title"><i class="fa-solid fa-clipboard"></i> Resident Registry Profiling Form</h2>
           <p class="modal-subtitle">Fill in the resident's details below.</p>
         </div>
         <button class="modal-close" onclick="closeAddResidentModal()">
@@ -218,16 +214,6 @@
                 <option value="Barangay San Jose">Barangay San Jose</option>
                 <option value="Barangay Rizal">Barangay Rizal</option>
               </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="householdId">Household ID <span class="required">*</span></label>
-              <input type="text" id="householdId" class="form-input" placeholder="e.g. H-1" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="lengthOfResidency">Length of Residency</label>
-              <input type="text" id="lengthOfResidency" class="form-input" placeholder="e.g. 5 years">
             </div>
           </div>
         </div>
