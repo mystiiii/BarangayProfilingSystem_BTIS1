@@ -6,17 +6,18 @@
   <title>Households Management - Barangay Profiling System</title>
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/households.css">
+  <link rel="stylesheet" href="css/residents.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
   <div class="app-container">
     <aside class="sidebar">
       <ul class="sidebar-menu">
-        <li class="sidebar-item"><a href="#"><i class="fa-solid fa-table-cells-large"></i>Dashboard</a></li>
+        <!-- <li class="sidebar-item"><a href="#"><i class="fa-solid fa-table-cells-large"></i>Dashboard</a></li> -->
         <li class="sidebar-item"><a href="residents.html"><i class="fa-solid fa-users"></i>Residents</a></li>
         <li class="sidebar-item active"><a href="households.html"><i class="fa-solid fa-house"></i>Households</a></li>
-        <li class="sidebar-item"><a href="#"><i class="fa-solid fa-file-lines"></i>Reports</a></li>
-        <li class="sidebar-item"><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></li>
+        <!-- <li class="sidebar-item"><a href="#"><i class="fa-solid fa-file-lines"></i>Reports</a></li>
+        <li class="sidebar-item"><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></li> -->
       </ul>
     </aside>
 
@@ -33,7 +34,9 @@
         <input type="text" id="searchFilter" placeholder="Search household head, address, or ID..." oninput="applyFilters()">
       </div>
       <div class="header-actions">
-        <button class="add-resident-btn" onclick="openAddResidentModal()">+ NEW PROFILING</button>
+        <button class="add-resident-btn" onclick="openAddResidentModal()">
+          + NEW PROFILING
+        </button>
       </div>
     </header>
 
@@ -186,5 +189,6 @@
 
   <script src="js/app.js"></script>
   <script src="js/households.js"></script>
+  <script src="js/residents.js"></script>
 </body>
 </html>
