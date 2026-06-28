@@ -12,11 +12,11 @@
   <div class="app-container">
     <aside class="sidebar">
       <ul class="sidebar-menu">
-        <li class="sidebar-item"><a href="#"><i class="fa-solid fa-table-cells-large"></i>Dashboard</a></li>
+        <!-- <li class="sidebar-item"><a href="#"><i class="fa-solid fa-table-cells-large"></i>Dashboard</a></li> -->
         <li class="sidebar-item active"><a href="residents.html"><i class="fa-solid fa-users"></i>Residents</a></li>
         <li class="sidebar-item"><a href="households.html"><i class="fa-solid fa-house"></i>Households</a></li>
-        <li class="sidebar-item"><a href="#"><i class="fa-solid fa-file-lines"></i>Reports</a></li>
-        <li class="sidebar-item"><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></li>
+        <!-- <li class="sidebar-item"><a href="#"><i class="fa-solid fa-file-lines"></i>Reports</a></li>
+        <li class="sidebar-item"><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></li> -->
       </ul>
     </aside>
 
@@ -33,7 +33,7 @@
         <input type="text" placeholder="Search resident name, address, or ID...">
       </div>
       <div class="header-actions">
-        <button class="top-btn" onclick="openAddResidentModal()">
+        <button class="add-resident-btn" onclick="openAddResidentModal()">
           + NEW PROFILING
         </button>
       </div>
@@ -47,9 +47,6 @@
             <h2 class="ledger-title">Resident Registry Ledger</h2>
             <p class="ledger-subtitle">Official profile log database for verifying residency and program qualifications</p>
           </div>
-          <button class="add-resident-btn" onclick="openAddResidentModal()">
-            + NEW PROFILE FORM
-          </button>
         </div>
 
         <div class="filter-bar">
@@ -72,7 +69,7 @@
               <option value="Barangay Rizal">Barangay Rizal</option>
             </select>
           </div>
-          <div class="filter-records" id="recordsCount">Showing <strong>0</strong> of 0 total records</div>
+          <div class="filter-records" id="recordsCount">Showing <strong>00</strong> of 00 total records</div>
         </div>
 
         <div class="table-wrapper">
