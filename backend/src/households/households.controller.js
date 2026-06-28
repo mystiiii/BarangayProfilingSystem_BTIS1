@@ -8,6 +8,23 @@ export class HouseholdsController {
     this.householdsService = householdsService;
   }
 
+  @Get('profile-options')
+  getProfileOptions() {
+    return this.householdsService.getProfileOptions();
+  }
+
+  @Get(':addressId/family-units')
+  @Bind(Param('addressId'))
+  getFamilyUnits(addressId) {
+    return this.householdsService.getFamilyUnits(addressId);
+  }
+
+  @Post('new-profile')
+  @Bind(Body())
+  createNewProfile(newProfileDto) {
+    return this.householdsService.createNewProfile(newProfileDto);
+  }
+
   @Get()
   findAll() {
     return this.householdsService.findAll();
