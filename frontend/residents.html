@@ -6,33 +6,44 @@
   <title>Residents Management - Barangay Profiling System</title>
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/residents.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-
-  <div class="app-container">
+    <div class="app-container">
     <!-- Sidebar Navigation -->
     <aside class="sidebar">
-      <div class="sidebar-logo">
-        Barangay<span>Profile</span>
-      </div>
       <ul class="sidebar-menu">
-        <li class="sidebar-item active"><a href="residents.html">Residents</a></li>
-        <li class="sidebar-item"><a href="households.html">Households</a></li>
+        <li class="sidebar-item"><a href="a"><i class="fa-solid fa-table-cells-large"></i>Dashboard</a></li>
+        <li class="sidebar-item active"><a href="residents.html"><i class="fa-solid fa-users"></i>Residents</a></li>
+        <li class="sidebar-item"><a href="households.html"><i class="fa-solid fa-house"></i>Households</a></li>
+        <li class="sidebar-item"><a href="a"><i class="fa-solid fa-file-lines"></i>Reports</a></li>
+        <li class="sidebar-item"><a href="a"><i class="fa-solid fa-gear"></i>Settings</a></li>
       </ul>
     </aside>
 
+<header class="main-header">
+            <div class="sidebar-logo">
+                <i class="fa-solid fa-landmark"></i>
+                Brgy. System
+            <div class="logo-text">
+                <span>INTERNAL CONSOLE</span>
+            </div>
+      </div>
+            <div class="header-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text"
+                placeholder="Search resident name, address, or ID...">
+            </div>
+
+            <div class="header-actions">
+                <button class="top-btn">
+                + NEW PROFILING
+                </button>
+            </div>
+        </header>
+
     <!-- Main Workspace -->
     <main class="main-content">
-      <!-- Top Bar -->
-      <header class="main-header">
-        <div class="page-title">
-          <h1>Residents</h1>
-        </div>
-        <div class="user-profile">
-          <span class="user-name">Administrator</span>
-          <div class="avatar">A</div>
-        </div>
-      </header>
 
       <!-- Page Content -->
       <section class="content-body">
@@ -43,7 +54,11 @@
             <h2 class="ledger-title">Resident Registry Ledger</h2>
             <p class="ledger-subtitle">Official profile log database for verifying residency and program qualifications</p>
           </div>
-          <button class="btn btn-primary" onclick="openAddResidentModal()">+ Add New Resident</button>
+          <button
+            class="add-resident-btn"
+            onclick="openAddResidentModal()">
+            + ADD NEW RESIDENT
+          </button>
         </div>
 
         <!-- Filter Bar -->
@@ -51,7 +66,7 @@
           <div class="filter-group">
             <label class="filter-label">Residency Status</label>
             <select class="filter-select" id="statusFilter" onchange="applyFilters()">
-              <option value="">All Statuses</option>
+              <option value="">ALL STATUSES</option>
               <option value="Active">Active</option>
               <option value="Pending">Pending</option>
               <option value="Inactive">Inactive</option>
@@ -62,12 +77,12 @@
           <div class="filter-group">
             <label class="filter-label">Barangay Sector</label>
             <select class="filter-select" id="sectorFilter" onchange="applyFilters()">
-              <option value="">All Barangays</option>
+              <option value="">ALL BARANGAYS</option>
               <option value="Barangay San Jose">Barangay San Jose</option>
               <option value="Barangay Rizal">Barangay Rizal</option>
             </select>
           </div>
-          <div class="filter-records" id="recordsCount">Showing 0 of 0 total records</div>
+          <div class="filter-records" id="recordsCount">Showing <STRONG>0</STRONG>0 of 0 total records</div>
         </div>
 
         <!-- Resident Data Table -->
@@ -88,7 +103,6 @@
               <!-- Populated by residents.js -->
             </tbody>
           </table>
-
           <div class="empty-state" id="emptyState" style="display:none;">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
@@ -107,9 +121,7 @@
             <button class="btn btn-secondary" id="nextBtn" onclick="changePage(1)" style="padding:6px 14px;">Next →</button>
           </div>
         </div>
-
-      </section>
-    </main>
+    </section>
   </div>
 
   <!-- ===== ADD RESIDENT MODAL ===== -->
@@ -272,5 +284,6 @@
 
   <script src="js/app.js"></script>
   <script src="js/residents.js"></script>
+</main>
 </body>
 </html>
