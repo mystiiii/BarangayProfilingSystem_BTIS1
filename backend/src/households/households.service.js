@@ -233,7 +233,53 @@ export class HouseholdsService {
   }
 
   findAll() {
-    return [];
+    return [
+      {
+        AddressID: 1,
+        Barangay: "Fort Bonifacio", 
+        HouseNo: "12-A",
+        Street: "5th Avenue",
+        ResidencyLength: "2 years",
+        HouseholdType: "Nuclear Family",
+        Status: "Rented"
+      },
+      {
+        AddressID: 2,
+        Barangay: "Pinagsama", 
+        HouseNo: "45",
+        Street: "Bayani Road",
+        ResidencyLength: "8 years",
+        HouseholdType: "Extended Family",
+        Status: "Owned"
+      },
+      {
+        AddressID: 3,
+        Barangay: "Ususan", 
+        HouseNo: "108",
+        Street: "Gen. Luna St.",
+        ResidencyLength: "15 years",
+        HouseholdType: "Nuclear Family",
+        Status: "Owned"
+      },
+      {
+        AddressID: 4,
+        Barangay: "Tuktukan", 
+        HouseNo: "22-B",
+        Street: "M.L. Quezon St.",
+        ResidencyLength: "6 months",
+        HouseholdType: "Single Person",
+        Status: "Rented"
+      },
+      {
+        AddressID: 5,
+        Barangay: "Wawa", 
+        HouseNo: "7",
+        Street: "Guerrero St.",
+        ResidencyLength: "25 years",
+        HouseholdType: "Extended Family",
+        Status: "Rented-free"
+      },
+    ];
   }
 
   findOne(id) {
