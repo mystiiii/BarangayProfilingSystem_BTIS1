@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Patch, Delete, Body, Param, Dependencies, Bind } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Delete, Body, Param, Query, Dependencies, Bind } from '@nestjs/common';
 import { ResidentsService } from './residents.service';
 
 @Controller('residents')
@@ -9,8 +9,15 @@ export class ResidentsController {
   }
 
   @Get()
-  findAll() {
-    return this.residentsService.findAll();
+  @Bind(Query())
+  findAll(query) {
+    return this.residentsService.findAll(query);
+  }
+
+  @Get('table')
+  @Bind(Query())
+  findTable(query) {
+    return this.residentsService.findTable(query);
   }
 
   @Get(':id')

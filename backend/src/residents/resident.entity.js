@@ -31,4 +31,7 @@ export class Resident {
 
   @Column({ name: 'Status', type: 'varchar', length: '50', nullable: true })
   Status;
+
+  @Column({ name: 'Address', type: 'int', nullable: true })
+  Address;
 }
