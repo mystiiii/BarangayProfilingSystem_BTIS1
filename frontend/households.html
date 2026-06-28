@@ -6,50 +6,61 @@
   <title>Households Management - Barangay Profiling System</title>
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/households.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
 
   <div class="app-container">
-    <!-- Sidebar Navigation -->
     <aside class="sidebar">
-      <div class="sidebar-logo">
-        Barangay<span>Profile</span>
-      </div>
       <ul class="sidebar-menu">
-        <li class="sidebar-item"><a href="residents.html">Residents</a></li>
-        <li class="sidebar-item"><a href="households.html">Households</a></li>
+        <li class="sidebar-item"><a href="#"><i class="fa-solid fa-table-cells-large"></i>Dashboard</a></li>
+        <li class="sidebar-item"><a href="residents.html"><i class="fa-solid fa-users"></i>Residents</a></li>
+        <li class="sidebar-item active"><a href="households.html"><i class="fa-solid fa-house"></i>Households</a></li>
+        <li class="sidebar-item"><a href="#"><i class="fa-solid fa-file-lines"></i>Reports</a></li>
+        <li class="sidebar-item"><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></li>
       </ul>
     </aside>
 
-    <!-- Main Workspace -->
-    <main class="main-content">
-      <!-- Top Bar -->
-      <header class="main-header">
-        <div class="page-title">
-          <h1>Households</h1>
+    <main class="main-content" style="display: flex; flex-direction: column; min-height: 100vh;">
+      
+      <header class="main-header" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid #e2e8f0; background: #fff; min-height: 70px;">
+        <div style="font-weight: 700; color: #1e293b; display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-landmark"></i>
+          <span>BRGY. SYSTEM</span>
+          <span style="font-size: 0.75rem; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; color: #64748b; font-weight: 500;">INTERNAL CONSOLE</span>
         </div>
-        <div class="user-profile">
-          <span class="user-name">Administrator</span>
-          <div class="avatar">A</div>
+        <div class="header-search" style="flex: 0 1 400px; position: relative;">
+          <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #94a3b8;"></i>
+          <input type="text" placeholder="Search family head, address, or Family ID..." style="width: 100%; padding: 8px 12px 8px 36px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.875rem;">
+        </div>
+        <div class="header-actions">
+          <button class="top-btn" onclick="window.location.href='residents.html'" style="cursor: pointer; padding: 8px 16px; background: #0f172a; color: #fff; border: none; border-radius: 6px; font-weight: 600; font-size: 0.75rem; letter-spacing: 0.05em;">
+            + NEW PROFILING
+          </button>
         </div>
       </header>
 
-      <!-- Page Content -->
-      <section class="content-body">
-        <!-- Control Bar -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-          <h2 style="font-size: 1.1rem; font-weight: 600;">Registered Households</h2>
-          <button class="btn btn-primary">+ Add Household</button>
+      <section class="content-body" style="padding: 40px; flex-grow: 1; background: #fafafa;">
+        
+        <div class="page-heading" style="margin-bottom: 32px; display: block; clear: both;">
+          <h1 class="ledger-title" style="font-size: 1.75rem; font-weight: 700; margin: 0 0 8px 0; color: #0f172a; letter-spacing: -0.02em;">Family Units & Households</h1>
+          <p class="ledger-subtitle" style="margin: 0; color: #64748b; font-size: 0.95rem; font-weight: 400;">Displaying tracked family profiles based on active registries</p>
         </div>
 
-        <!-- Cards Grid Layout -->
-        <div class="households-grid">
-          <div style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); padding: 40px 0;">
-            No households registered yet.
+        <div class="households-grid" id="householdsGrid" style="margin-top: 24px; display: block; width: 100%;">
+          <div style="text-align: center; color: #64748b; padding: 80px 24px; background: #ffffff; border-radius: 12px; border: 2px dashed #e2e8f0; font-size: 1rem; line-height: 1.6; max-width: 1200px; margin: 0 auto;">
+            <i class="fa-solid fa-folder-open" style="font-size: 2.5rem; color: #cbd5e1; margin-bottom: 16px; display: block;"></i>
+            No family households registered yet. <br>
+            Use the <strong style="color: #0f172a; font-weight: 600;">New Profile Form</strong> in Residents to build family units.
           </div>
         </div>
+
       </section>
     </main>
+  </div>
+
+  <div style="display: none !important;">
+    <button class="btn btn-primary" id="addHouseholdBtn">+</button>
   </div>
 
   <script src="js/app.js"></script>
